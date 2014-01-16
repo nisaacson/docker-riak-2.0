@@ -1,4 +1,4 @@
-docker-riak
+docker-riak-2.0
 ===========
 
 Builds a docker image for Riak.
