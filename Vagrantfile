@@ -1,9 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-BUILD_IMAGE=true
-PROVISION_DOCKER = false
-STOP_ALL_CONTAINERS=true
+BUILD_IMAGE = true
+PROVISION_DOCKER = true
+STOP_ALL_CONTAINERS=true # kill all running containers before launching a new one
+
+# IP addresses. Virtual machines are configured with private networking
 ALPHA_IP = '192.168.50.10'
 BETA_IP = '192.168.50.20'
 
