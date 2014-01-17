@@ -12,7 +12,17 @@ function install_node {
     return
   fi
 
+  sudo apt-get update
+  if [[ $? -ne 0 ]]; then
+    echo "failed to update apt"
+    exit 1
+  fi
+
   sudo apt-get install -qqy python-software-properties
+  if [[ $? -ne 0 ]]; then
+    echo "failed to install package python-software-properties"
+    exit 1
+  fi
   sudo add-apt-repository ppa:chris-lea/node.js
   sudo apt-get update
   sudo apt-get install -qqy nodejs

@@ -1,9 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-BUILD_IMAGE = true # build docker image from Dockerfile
-PROVISION_DOCKER = true # install docker daemon on virtual machine
-STOP_ALL_CONTAINERS = true # kill all running containers before launching a new one
+BUILD_IMAGE = true          # build docker image from Dockerfile
+PROVISION_DOCKER = true     # install docker daemon on virtual machine
+STOP_ALL_CONTAINERS = true  # kill all running containers before launching a new one
 
 # IP addresses. Virtual machines are configured with private networking
 ALPHA_IP = '192.168.50.10'
@@ -16,6 +16,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
+
+  if PROVISION_DOCKER
+    config.vm.provision "docker" do |d|
+      d.pull_images "ubuntu"
+    end
+  end
+
+
 
 
   ###################
@@ -51,13 +59,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       script.args = BETA_IP, ALPHA_IP
     end
   end
-
-  if PROVISION_DOCKER
-    config.vm.provision "docker" do |d|
-      d.pull_images "ubuntu"
-    end
-  end
-
 
 
   ###################
