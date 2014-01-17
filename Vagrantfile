@@ -1,9 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-BUILD_IMAGE = true
-PROVISION_DOCKER = true
-STOP_ALL_CONTAINERS=true # kill all running containers before launching a new one
+BUILD_IMAGE = true # build docker image from Dockerfile
+PROVISION_DOCKER = true # install docker daemon on virtual machine
+STOP_ALL_CONTAINERS = true # kill all running containers before launching a new one
 
 # IP addresses. Virtual machines are configured with private networking
 ALPHA_IP = '192.168.50.10'
@@ -22,6 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Initial Shell Provisioner
   ###################
   config.vm.provision "shell", path: "./vagrant_scripts/initial.sh"
+
   if BUILD_IMAGE
     config.vm.provision "shell", path: "./vagrant_scripts/build_image.sh"
   end
@@ -38,8 +39,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     alpha.vm.network :private_network, ip: ALPHA_IP
     alpha.vm.hostname = "alpha"
     alpha.vm.provision "shell" do |script|
-      script.path = "./vagrant_scripts/solo.sh"
-      script.args = ALPHA_IP
+      script.inline = "cd /vagrant/vagrant_scripts && ./solo.js --host-ip #{ALPHA_IP}"
     end
   end
 
@@ -47,7 +47,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     beta.vm.network :private_network, ip: BETA_IP
     beta.vm.hostname = "beta"
     beta.vm.provision "shell" do |script|
-      script.path = "./vagrant_scripts/join.sh"
+      script.inline = "cd /vagrant/vagrant_scripts && ./join.js --host-ip #{BETA_IP} --join-ip #{ALPHA_IP}"
       script.args = BETA_IP, ALPHA_IP
     end
   end

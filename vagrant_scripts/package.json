@@ -1,0 +1,22 @@
+{
+  "name": "vagrant_scripts",
+  "version": "0.0.0",
+  "description": "",
+  "main": "generate_riak_config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "noah isaacson",
+  "license": "ISC",
+  "dependencies": {
+    "config": "~0.4.34",
+    "lodash-node": "~2.4.1",
+    "yaml": "~0.2.3",
+    "q": "~1.0.0",
+    "eyespect": "~0.1.10",
+    "optimist": "~0.6.0",
+    "request": "~2.33.0",
+    "async": "~0.2.9",
+    "mustache": "~0.8.1"
+  }
+}

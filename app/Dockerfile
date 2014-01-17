@@ -71,11 +71,12 @@ ENV RIAK_NODE_NAME "riak@172.17.42.1"
 # Expose sshd server port
 EXPOSE 22
 
+# Expose Riak HTTP port
+EXPOSE 8098
 
 # Expose Riak protocol buffer port
 EXPOSE 8087
-# Expose Riak HTTP port
-EXPOSE 8098
+
 # Expose Riak Yokozuna Solr port
 EXPOSE 8093
 

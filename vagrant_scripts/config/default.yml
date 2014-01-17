@@ -1,0 +1,28 @@
+ports:
+  ssh:
+    host: 1111
+    dest: 22
+  riak_http:
+    host: 8098
+    dest: 8098
+  riak_pb:
+    host: 8087
+    dest: 8087
+
+  yokozuna_solr:
+    host: 8093
+    dest: 8093
+
+  yokozuna_solr_jmx:
+    host: 8985
+    dest: 8985
+  erlang_epmd:
+    host: 4369
+    dest: 4369
+  riak_handoff:
+    host: 8099
+    dest: 8099
+
+
+range_start: 8000
+range_end: 8005
