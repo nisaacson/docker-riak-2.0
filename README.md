@@ -3,6 +3,10 @@ docker-riak-2.0
 
 Builds a docker image for Riak.
 
+# NOTE
+
+This Dockerfile was built for a beta version of Riak 2.0. Use at your own risk
+
 # Usage
 
 ```bash
