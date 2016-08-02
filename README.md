@@ -74,7 +74,7 @@ The riak server container is designed to be run in a cluster. You must specify t
 
 The `RIAK_NODE_NAME` environment variable should be set to the ip address of the host machine. For example, if the host machine is running on `192.168.10.10`, then `RIAK_NODE_NAME="riak@192.168.10.10"`
 
-### `RIAK_JOIN_NODE
+### `RIAK_JOIN_NODE`
 
 The `RIAK_JOIN_NODE` environment variable should be set to another running riak node. If this environment variable is set, after the container starts, it will automatically join the cluster by connecting to the riak node at `RIAK_JOIN_NODE` address.
 
